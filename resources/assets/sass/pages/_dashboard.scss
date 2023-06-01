@@ -1,0 +1,32 @@
+.user-stats {
+  .user-stat {
+    display: inline-block;
+    width: 49%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .user-stat-group {
+    border-bottom: 0.5px solid #ccc;
+  }
+
+  .user-stat-group.top-border {
+    border-top: 0.5px solid #ccc;
+  }
+
+  .user-stat:nth-child(even) {
+    border-left: 0.5px solid #ccc;
+  }
+}
+
+.hero.hero-dashboard .hero-stats .hero-stat {
+    display: inline-block;
+    color: #3b454a;
+    background: #fff;
+    padding: 5px 10px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    border: 1px solid #eee;
+    margin-right: 10px;
+    border-radius: 0px;
+    width: 100%;
+    margin-bottom: 10px;
+}

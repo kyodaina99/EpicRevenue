@@ -1,0 +1,91 @@
+<div>
+    <form name="contest_form" ng-submit="create(contest, rewards)">
+        <table class="table table-striped table-bordered">
+            <ol class="breadcrumb">
+                <li><a href="#/stats/">Admin</a></li>
+                <li><a href="#/contests/">Contests</a></li>
+                <li class="active">Create <% contest.id %></li>
+            </ol>
+            <tr>
+                <td colspan="2"><h2>Create Contest</h2></td>
+            </tr>
+            <tr>
+                <td><b>Name:</b></td>
+                <td>
+                    <input ng-model="contest.name" name="name" class="form-control" required />
+                    <div role="alert">
+                        <span class="error" ng-show="contest_form.name.$error.required">
+                            Required!
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Description:</b></td>
+                <td>
+                    <textarea ng-model="contest.description" name="description" class="form-control"></textarea>
+                    <div role="alert">
+                        <span class="error" ng-show="contest_form.description.$error.required">
+                            Required!
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Start At:</b></td>
+                <td>
+                    <input type="date" ng-model="contest.start_at" name="start_at" class="form-control" required />
+                    <div role="alert">
+                        <span class="error" ng-show="contest_form.start_at.$error.required">
+                            Required!
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><b>End At:</b></td>
+                <td>
+                    <input type="date" ng-model="contest.end_at" name="end_at" class="form-control" required />
+                    <div role="alert">
+                        <span class="error" ng-show="contest_form.end_at.$error.required">
+                            Required!
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Type</b></td>
+                <td>
+                    <select name="type" ng-model="contest.type" class="form-control" required>
+                        <option value="top_earner" selected>Top Earner</option>
+                        <option value="referral">Referral</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+        <h3>Rewards</h3>
+        <table class="table table-striped table-bordered">
+            <tr ng-repeat="reward in rewards">
+                <td><b>Position <% reward.position %></b></td>
+                <td class="row">
+                    <div class="col-sm-12">
+                        <b>Name:</b> <input type="text" ng-model="reward.name" class="form-control" required />
+                    </div>
+                    <div class="col-sm-12">
+                        <b>Description:</b> <textarea class="form-control" ng-model="reward.description" rows="5"></textarea>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Options</b></td>
+                <td>
+                    <a class="btn btn-success" role="button" ng-click="addReward()">Add</a>
+                    <a class="btn btn-danger" role="button" ng-click="removeReward()">Remove</a>
+                </td>
+            </tr>
+        </table>
+        <div><input class="form-control btn btn-primary" type="submit" value="Create"><% message %></div>
+    </form>
+</div>
+<hr>

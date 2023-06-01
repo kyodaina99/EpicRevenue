@@ -1,0 +1,65 @@
+.influencers-page-content {
+  float: left;
+  width: 100%;
+  padding: 50px 0;
+  .nav {
+    border-bottom: 1px solid #ccc;
+  }
+  .nav-pills>li {
+    float: left;
+    text-align: center;
+    padding: 20px 0;
+    width: 12%;
+  }
+  .nav-pills>li>a {
+    border-radius: 6px;
+    text-align: center;
+    color: #62A2F7;
+    display: inline-block;
+    padding: 10px;
+    width: 73px;
+    margin-bottom: 5px;
+  }
+  .nav-pills>li>a .fa {
+    font-size: 35px;
+  }
+  .nav-pills>li.active>a,
+  .nav-pills>li.active>a:hover,
+  .nav-pills>li.active>a:focus {
+    color: #fff;
+    background-color: #62A2F7;
+  }
+  .tab-content {
+    text-align: center;
+    padding: 40px 0;
+  }
+  .tab-content {
+    h3.tab-title {
+      color: #000;
+      font-size: 30px;
+      font-weight: 300;
+
+      h4.tab-sub-title {
+        font-weight: 900;
+        color: #000;
+        margin: 15px 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $screen-sm) {
+  .influencers-page-content {
+    .nav {
+      display: none;
+    }
+    .tab-content>.tab-pane {
+      display: block;
+      border-bottom: 1px dashed #ccc;
+      padding-bottom: 30px;
+    }
+    .tab-content>.tab-pane.fade {
+      opacity: 1;
+    }
+  }
+}

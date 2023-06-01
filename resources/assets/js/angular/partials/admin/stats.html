@@ -1,0 +1,173 @@
+<div ng-controller="StatsController">
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Today Clicks</h3></div>
+                <div class="panel-body"><span id="today_clicks"><% stats.today_clicks %></span></div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Today Leads</h3></div>
+                <div class="panel-body"><span id="today_leads"><% stats.today_leads %></span></div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Today CR</h3></div>
+                <div class="panel-body">
+                    <span id="today_cr"><%(stats.today_leads / stats.today_clicks) * 100 | number : fractionSize %>%</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Today EPC</h3></div>
+                <div class="panel-body">
+                    <span id="today_epc"><% stats.earnings_today / stats.today_clicks | number : fractionSize %></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Today REV</h3></div>
+                <div class="panel-body"><span id="today_revenue"><% stats.earnings_today | currency %></span></div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Today EProfits</h3></div>
+                <div class="panel-body"><span id="today_profits"><% stats.profits_today | currency %></span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Yesterday Clicks</h3></div>
+                <div class="panel-body"><% stats.yesterday_clicks %></div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Yesterday Leads</h3></div>
+                <div class="panel-body"><% stats.yesterday_leads %></div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Yesterday CR</h3></div>
+                <div class="panel-body">
+                    <span id="yesterday_cr"><% (stats.yesterday_leads / stats.yesterday_clicks) * 100 | number : fractionSize %>%</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Yesterday EPC</h3></div>
+                <div class="panel-body">
+                    <span id="yesterday_epc"><% stats.earnings_yesterday / stats.yesterday_clicks | number : fractionSize %></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Yesterday REV</h3></div>
+                <div class="panel-body"><% stats.earnings_yesterday | currency %></div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Yesterday eProfits</h3></div>
+                <div class="panel-body"><% stats.profits_yesterday | currency %></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Month Clicks</h3></div>
+                <div class="panel-body"><span id="month_clicks"><% stats.month_clicks %></span></div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Month Leads</h3></div>
+                <div class="panel-body"><span id="month_leads"><% stats.month_leads %></span></div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Month CR</h3></div>
+                <div class="panel-body">
+                    <span id="month_cr"><% (stats.month_leads / stats.month_clicks) * 100 | number : fractionSize %>%</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Month EPC</h3></div>
+                <div class="panel-body">
+                    <span id="month_epc"><% stats.earnings_month / stats.month_clicks | number : fractionSize %></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Month REV</h3></div>
+                <div class="panel-body"><span id="month_revenue"><% stats.earnings_month | currency %></span></div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Month eProfits</h3></div>
+                <div class="panel-body"><span id="month_profits"><% stats.profits_month | currency %></span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Total Clicks</h3></div>
+                <div class="panel-body"><span id="total_clicks"><% stats.total_clicks %></span></div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Total Leads</h3></div>
+                <div class="panel-body"><span id="total_leads"><% stats.total_leads %></span></div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Total CR</h3></div>
+                <div class="panel-body">
+                    <span id="total_cr"><% (stats.total_leads / stats.total_clicks) * 100 | number : fractionSize %>%</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Total EPC</h3></div>
+                <div class="panel-body">
+                    <span id="total_epc"><% stats.earnings_total / stats.total_clicks | number : fractionSize %></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Total REV</h3></div>
+                <div class="panel-body"><span id="total_revenue"><% stats.earnings_total | currency %></span></div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Total eProfits</h3></div>
+                <div class="panel-body"><span id="total_profits"><% stats.profits_total | currency %></span></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,102 @@
+ <div class="page-header mb-4">
+    <div class="row align-items-center">
+        <div class="col-sm mb-2 mb-sm-0">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-no-gutter">
+                    <li class="breadcrumb-item"><a class="breadcrumb-link" href="#">Publishers</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">List Publishers</li>
+                </ol>
+            </nav>
+
+            <h1 class="page-header-title">View Publishers</h1>
+        </div>
+        <!-- End Col -->
+    </div>
+    <!-- End Row -->
+</div>
+ 
+ <!-- Form -->
+<div class="mb-4 card p-3">
+    <div class="row">
+        <div class="col-6">
+            <label for="name" class="w-100 mb-2 fw-700">Search</label>
+            <input type="text" ng-model="query" class="form-control mb-2" placeholder="Search...">
+        </div>
+        <div class="col-auto">
+            <label for="name" class="w-100 mb-2 fw-700">Search by</label>
+            <select ng-model="search_by" class="form-select mb-2">
+                <option value="id">ID</option>
+                <option value="firstname">First Name</option>
+                <option value="lastname">Last Name</option>
+                <option value="email">Email Address</option>
+            </select>
+        </div>
+        <div class="col-auto">
+            <label for="name" class="w-100 mb-2 fw-700">Sort by</label>
+            <select ng-model="order_by" class="form-select mb-2">
+                <option value="id">ID</option>
+                <option value="created_at">Newest</option>
+                <option value="firstname">First Name</option>
+                <option value="lastname">Last Name</option>
+                <option value="email">Email Address</option>
+            </select>
+        </div>
+        <div class="col-auto">
+            <label for="name" class="w-100 mb-2 fw-700">Order by</label>
+            <select ng-model="order" class="form-select mb-2">
+                <option value="asc">Ascending</option>
+                <option value="dsc">Descending</option>
+            </select>
+        </div>
+        <div class="col-auto">
+            <input class="btn btn-primary mt-4" type="submit" value="Search" ng-click="searchRecords(query, search_by, order_by, order)" />
+        </div>
+    </div>
+    <!-- End Row -->
+</div>
+<!-- End Form -->
+
+<div class="card rounded-0">
+    <div class="table-responsive">
+        <uib-pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" ng-change="pageChanged()" class="pagination border-bottom px-2 py-3 mb-0" boundary-links="true" rotate="false" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+
+        <div class="strpied-tabled-with-hover datatable-custom">
+            <table class="table table-lg table-thead-bordered table-nowrap table-align-middle card-table dataTable table-hover no-footer">
+                <tr>
+                    <th>PID</th>
+                    <th>Status</th>
+                    <th>Total Earned</th>
+                    <th>Total Paid</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Options</th>
+                </tr>
+
+                <tr ng-repeat="publisher in publishers | filter:query">
+                    <td><a href="#/publishers/show/<% publisher.id %>"><% publisher.id %></a></td>
+                    <td>
+                        <!--<p ng-if="publisher.status.any_network_added == 'yes'" class="text-success"><strong>Network => <% publisher.status.any_network_added %></strong></p>-->
+                        <p ng-if="publisher.status.is_contact_info_added == 'yes'" class="text-success"><strong>Address => <% publisher.status.is_contact_info_added %></strong></p>
+                        <p ng-if="publisher.status.email_confirmed == 'yes'" class="text-success"><strong>Email => <% publisher.status.email_confirmed %></strong></p>
+                        <p ng-if="publisher.approved == 'yes' && status != true" class="text-success"><strong>Approved => <% publisher.approved %></strong></p>
+
+                        <!--<p ng-if="publisher.status.any_network_added == 'no'" class="text-danger"><strong>Network => <% publisher.status.any_network_added %></strong></p>-->
+                        <p ng-if="publisher.status.is_contact_info_added == 'no'" class="text-danger"><strong>Address => <% publisher.status.is_contact_info_added %></strong></p>
+                        <p ng-if="publisher.status.email_confirmed == 'no'" class="text-danger"><strong>Email => <% publisher.status.email_confirmed %></strong></p>
+                        <p ng-if="publisher.approved == 'no' && status != true" class="text-danger"><strong>Approved => <% publisher.approved %></strong></p>
+                    </td>
+                    <td><% publisher.total_earned | number : fractionSize %></td>
+                    <td><% publisher.total_paid | number : fractionSize %></td>
+                    <td><a href="#/publishers/show/<% publisher.id %>"><% publisher.firstname %> <% publisher.lastname %></a></td>
+                    <td><a href="mailto:<% publisher.email %>"><% publisher.email %></a></td>
+                    <td>
+                        <a href="#/publishers/show/<% publisher.id %>" class="btn btn-primary">View App</a>
+                        <a href="#/publishers/edit/<% publisher.id %>" class="btn btn-primary">View Account</a>
+                        <!--<a href="mass.php?pid='.$row['id'].'" target="_blank" class="btn btn-default">Email</a>-->
+                    </td>
+                </tr>
+            </table>
+            <uib-pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" ng-change="pageChanged()" class="pagination px-2" boundary-links="true" rotate="false" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+        </div>
+    </div>
+</div>

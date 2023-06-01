@@ -1,0 +1,55 @@
+.social-icons {
+  width: 100%;
+  float: left;
+
+  .social-icon {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+  }
+}
+.social-shares {
+  .facebook {
+    background: #3B5998;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  .twitter {
+    background: #1dcaff;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  .gplus {
+    background: #dd4b39;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+}
+
+.social-icons {
+  a {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: $brand-gray;
+    margin: 3px;
+    width: 30px;
+    height: 30px;
+    .fa {
+      border: 1px solid $brand-gray;
+      padding: 8px 7px;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      width: 100%;
+    }
+  }
+}
+
+.ir-icon {
+
+  img {
+    margin: 0 auto;
+    padding-bottom: 8px;
+  }
+}

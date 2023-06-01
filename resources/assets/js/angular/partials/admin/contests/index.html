@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    You can search contests using the below form.
+    <table class="table table-striped table-bordered">
+        <tr>
+            <td>Search: </td>
+            <td><input ng-model="query"></td>
+        </tr>
+        <tr>
+            <td>Sort by:</td>
+            <td>
+                <select ng-model="orderProp">
+                    <option value="id">ID</option>
+                    <option value="created_at">Newest</option>
+                    <option value="name">Name</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Search" /></td>
+        </tr>
+    </table>
+    <h4><a href="#/contests/create">Create</a></h4>
+
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Start At</th>
+            <th>End At</th>
+            <th>Options</th>
+        </tr>
+
+        <uib-pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" ng-change="pageChanged()" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+
+        <tr ng-repeat="contest in contests | filter:query | orderBy:'-orderProp'">
+            <td><a href="#/contests/show/<% contest.id %>"><% contest.id %></a></td>
+            <td><a href="#/contests/show/<% contest.id %>"><% contest.name %></a></td>
+            <td><% contest.description %></td>
+            <td><% contest.start_at | date:'medium' %></td>
+            <td><% contest.end_at | date:'medium' %></td>
+            <td>
+                <a href="#/contests/show/<% contest.id %>" class="btn btn-info">View</a>
+                <a href="#/contests/edit/<% contest.id %>" class="btn btn-default">Edit</a>
+                <a ng-click="delete(contest)" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div>

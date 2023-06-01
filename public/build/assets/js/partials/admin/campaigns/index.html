@@ -1,0 +1,111 @@
+ <div class="page-header mb-4">
+    <div class="row align-items-center">
+        <div class="col-sm mb-2 mb-sm-0">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-no-gutter">
+                    <li class="breadcrumb-item"><a class="breadcrumb-link" href="#">Campaigns</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">View Campaigns</li>
+                </ol>
+            </nav>
+
+            <h1 class="page-header-title">View Campaigns</h1>
+        </div>
+        <!-- End Col -->
+    </div>
+    <!-- End Row -->
+</div>
+ 
+ <!-- Form -->
+<div class="mb-4 card p-3">
+    <div class="row">
+        <div class="col-6">
+            <label for="name" class="w-100 mb-2 fw-700">Search</label>
+            <input type="text" ng-model="query" class="form-control mb-2" placeholder="Search...">
+        </div>
+        <div class="col-auto">
+            <label for="name" class="w-100 mb-2 fw-700">Search by</label>
+            <select ng-model="search_by" class="form-select mb-2">
+                <option value="id">ID</option>
+                <option value="name">Name</option>
+                <option value="description">Description</option>
+                <option value="requirements">Requirements</option>
+                <option value="tracking">Tracking</option>
+                <option value="network_id">Network ID</option>
+                <option value="url">URL</option>
+                <option value="cap_url">CAP URL</option>
+            </select>
+        </div>
+        <div class="col-auto">
+            <label for="name" class="w-100 mb-2 fw-700">Sort by</label>
+            <select ng-model="order_by" class="form-select mb-2">
+                <option value="active">Active</option>
+                <option value="created_at">Newest</option>
+                <option value="id">ID</option>
+                <option value="name">Name</option>
+                <option value="description">Description</option>
+                <option value="requirements">Requirements</option>
+                <option value="tracking">Tracking</option>
+                <option value="network_id">Network ID</option>
+                <option value="url">URL</option>
+                <option value="cap_url">CAP URL</option>
+            </select>
+        </div>
+        <div class="col-auto">
+            <label for="name" class="w-100 mb-2 fw-700">Order by</label>
+            <select ng-model="order" class="form-select mb-2">
+                <option value="asc">Ascending</option>
+                <option value="dsc">Descending</option>
+            </select>
+        </div>
+        <div class="col-auto">
+            <input class="btn btn-primary mt-4" type="submit" value="Search" ng-click="searchRecords(query, search_by, order_by, order)" />
+        </div>
+    </div>
+    <!-- End Row -->
+</div>
+<!-- End Form -->
+
+   
+
+<div class="card rounded-0">
+    <div class="table-responsive">
+        <uib-pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" ng-change="pageChanged()" class="pagination px-2 border-bottom py-3 mb-0" boundary-links="true" rotate="false" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+        <div class="strpied-tabled-with-hover datatable-custom">
+            <table class="table table-lg table-thead-bordered table-nowrap table-align-middle card-table dataTable table-hover no-footer">
+                <tr>
+                    <th>ID</th>
+                    <th>Active</th>
+                    <th>Name</th>
+                    <th>Clicks</th>
+                    <th>Leads</th>
+                    <th>Reversals</th>
+                    <th>CR</th>
+                    <th>Estimated Profit</th>
+                    <th>Network</th>
+                    <th>Options</th>
+                </tr>
+
+                <tr ng-repeat="campaign in campaigns | filter:query | orderBy:'-order_by'">
+                    <td><% campaign.id %></td>
+                    <td><% campaign.active %></td>
+                    <td><% campaign.name %></td>
+                    <td><% campaign.clicks | number %></td>
+                    <td><% campaign.leads | number %></td>
+                    <td><% campaign.reversals | number %></td>
+                    <td><% ((campaign.leads / (campaign.leads + campaign.clicks)) * 100) | number %>%</td>
+                    <td><% (campaign.leads * campaign.network_rate) - (campaign.leads * campaign.rate) | currency %></td>
+                    <td><% campaign.network.name %></td>
+                    <td>
+                        <a href="/admin/campaigns/<% campaign.id %>/edit" class="btn btn-primary">Edit</a>
+                        <a href="/admin/campaigns/gallery/<% campaign.id %>/edit" class="btn btn-secondary">Creatives</a>
+                        <!--
+                        <a href="#/campaigns/creatives/<% campaign.id %>" class="btn btn-info">Creatives</a>
+                        <a href="#/campaigns/private/<% campaign.id %>" class="btn btn-default">Privates</a>
+                        -->
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <uib-pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" ng-change="pageChanged()" class="pagination px-2" boundary-links="true" rotate="false" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+    </div>
+</div>

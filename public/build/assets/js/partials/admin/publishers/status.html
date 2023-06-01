@@ -1,0 +1,74 @@
+<div class="container-fluid">
+    You can search publishers using the below form.
+    <table class="table table-striped table-bordered">
+        <tr>
+            <td>Search: </td>
+            <td><input ng-model="query"></td>
+        </tr>
+        <tr>
+            <td>Search by:</td>
+            <td>
+                <select ng-model="search_by">
+                    <option value="id">ID</option>
+                    <option value="firstname">First Name</option>
+                    <option value="lastname">Last Name</option>
+                    <option value="email">Email Address</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Sort by:</td>
+            <td>
+                <select ng-model="order_by">
+                    <option value="id">ID</option>
+                    <option value="created_at">Newest</option>
+                    <option value="firstname">First Name</option>
+                    <option value="lastname">Last Name</option>
+                    <option value="email">Email Address</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Order by:</td>
+            <td>
+                <select ng-model="order">
+                    <option value="asc">Ascending</option>
+                    <option value="dsc">Descending</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Search" ng-click="searchRecords(query, search_by, order_by, order)" /></td>
+        </tr>
+    </table>
+
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>PID</th>
+            <th>Status</th>
+            <th>Total Earned</th>
+            <th>Total Paid</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Options</th>
+        </tr>
+
+        <uib-pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" ng-change="pageChanged()" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+
+        <tr ng-repeat="publisher in publishers | filter:query | orderBy:orderProp">
+            <td><a href="#/publishers/show/<% publisher.id %>"><% publisher.id %></a></td>
+            <td><% publisher.approved %></td>
+            <td><% publisher.total_earned | number : fractionSize %></td>
+            <td><% publisher.total_paid | number : fractionSize %></td>
+            <td><a href="#/publishers/show/<% publisher.id %>"><% publisher.firstname %> <% publisher.lastname %></a></td>
+            <td><a href="mailto:<% publisher.email %>"><% publisher.email %></a></td>
+            <td>
+                <a href="#/publishers/show/<% publisher.id %>" class="btn btn-default">View App</a>
+                <a href="#/publishers/edit/<% publisher.id %>" class="btn btn-default">View Account</a>
+                <!--<a href="mass.php?pid='.$row['id'].'" target="_blank" class="btn btn-default">Email</a>-->
+            </td>
+        </tr>
+    </table>
+</div>

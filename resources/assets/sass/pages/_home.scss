@@ -1,0 +1,24 @@
+.homepage {
+  .info-box {
+    .info-box-icon {
+      vertical-align: middle;
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  .brand {
+    margin-bottom: 15px;
+    height: 85px;
+    line-height: 85px;
+    img {
+      padding: 0 20px;
+      max-width: 150px;
+    }
+  }
+
+  .hero {
+    margin-bottom: 0;
+    padding: 150px 0;
+  }
+}

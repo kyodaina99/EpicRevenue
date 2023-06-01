@@ -1,0 +1,301 @@
+<div ng-controller="PublisherEditController">
+    <form name="myForm">
+        <table class="table table-striped table-bordered">
+            <ol class="breadcrumb">
+                <li><a href="#/stats/">Admin</a></li>
+                <li><a href="#/publishers/">Publishers</a></li>
+                <li class="active">Edit <% user.user.firstname %></li>
+            </ol>
+            <tr>
+                <td colspan="2"><h2>Personal Information</h2></td>
+            </tr>
+                <tr>
+                    <td><b>ID:</b></td>
+                    <td><% user.user.id %></td>
+                </tr>
+                <tr>
+                    <td><b>Manager:</b></td>
+                    <td>
+                        <% user.user.approved_by %>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>First name:</b></td>
+                    <td>
+                        <input ng-model="user.user.firstname" name="firstname" required />
+                        <div role="alert">
+                            <span class="error" ng-show="myForm.firstname.$error.required">
+                                Required!
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            <tr>
+                <td><b>Last name:</b></td>
+                <td>
+                    <input ng-model="user.user.lastname" name="lastname" required />
+                    <div role="alert">
+                            <span class="error" ng-show="myForm.lastname.$error.required">
+                                Required!
+                            </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Email address:</b></td>
+                <td>
+                    <input ng-model="user.user.email" name="email" type="email" required />
+                    <div role="alert">
+                        <span class="error" ng-show="myForm.email.$error.required">Required!</span>
+                        <span class="error" ng-show="myForm.email.$error.email">Not valid email!</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Phone number:</b></td>
+                <td>
+                    <input ng-model="user.user.phone" name="phone" />
+                </td>
+            </tr>
+            <tr>
+                <td><b>Address 1:</b></td>
+                <td><input ng-model="user.user.address1" name="address1" /></td>
+            </tr>
+            <tr>
+                <td><b>Address 2:</b></td>
+                <td><input ng-model="user.user.address2" name="address2" /></td>
+            </tr>
+            <tr>
+                <td><b>City:</b></td>
+                <td><input ng-model="user.user.city" name="city" /></td>
+            </tr>
+            <tr>
+                <td><b>State:</b></td>
+                <td><input ng-model="user.user.state" name="state" /></td>
+            </tr>
+            <tr>
+                <td><b>ZIP code:</b></td>
+                <td><input ng-model="user.user.zip" name="zip" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><h2>Account statuses</h2></td>
+            </tr>
+            <tr>
+                <td><b>Status:</b></td>
+                <td>
+                    <select ng-model="user.user.approved" name="approved" required>
+                        <option value="yes">Approved</option>
+                        <option value="no">Not Approved Yet</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Email Status:</b></td>
+                <td>
+                    <select ng-model="user.user.status.email_confirmed" name="approved" required>
+                        <option value="yes">Confirmed</option>
+                        <option value="no">Not Confirmed Yet</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Role:</b></td>
+                <td>
+                    <select ng-model="user.user.role" name="role">
+                        <option type="number" value="1">Admin</option>
+                        <option type="number" value="2">User</option>
+                        <option type="number" value="3">Business</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><h2>Website Information</h2></td>
+            </tr>
+            <tr>
+                <td><b>Website URL:</b></td>
+                <td><input type="text" name="webURL" size="40" value="" /></td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><h2>Other</h2></td>
+            </tr>
+            <tr>
+                <td><b>Lock tax:</b></td>
+                <td><input type="checkbox" name="lockTax" value="1" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" class="btn btn-default" value="Update" ng-click="update(user)"><% message %></td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><h2>Today Stats</h2></td>
+            </tr>
+            <tr>
+                <td><b>Today Raw Clicks:</b></td>
+                <td><% user.today_clicks | number %></td>
+            </tr>
+            <tr>
+                <td><b>Today Unique Clicks:</b></td>
+                <td><% user.today_unique_clicks | number %></td>
+            </tr>
+
+            <tr>
+                <td><b>Today Leads:</b></td>
+                <td><% user.today_leads + user.today_reversals | number %></td>
+            </tr>
+            <tr>
+                <td><b>Today Conversion Rate:</b></td>
+                <td>
+                    <% (user.today_leads / (user.today_clicks + user.today_leads)) * 100 | number : fractionSize %> %
+                </td>
+            </tr>
+            <tr>
+                <td><b>Today Unique Clicks Conversion Rate:</b></td>
+                <td>
+                    <% (user.today_leads / (user.today_unique_clicks + user.today_leads)) * 100 | number : fractionSize %> %
+                </td>
+            </tr>
+
+
+            <tr>
+                <td colspan="2"><h2>Earnings Stats</h2></td>
+            </tr>
+            <tr>
+                <td><b>Todays Earnings:</b></td>
+                <td><% user.today_earnings | currency %></td>
+            </tr>
+            <tr>
+                <td><b>Months Earnings:</b></td>
+                <td><% user.month_earnings | currency %></td>
+            </tr>
+            <tr>
+                <td><b>Last Months Earnings:</b></td>
+                <td><% user.lastMonth_earnings | currency %></td>
+            </tr>
+            <tr>
+                <td><b>Total Earnings:</b></td>
+                <td><% user.total_earnings | currency %></td>
+            </tr>
+
+
+            <tr>
+                <td colspan="2"><h2>Campaign Stats</h2></td>
+            </tr>
+            <tr>
+                <td><b>Raw Clicks:</b></td>
+                <td><% user.campaign_clicks | number %></td>
+            </tr>
+            <tr>
+                <td><b>Unique Clicks:</b></td>
+                <td><% user.campaign_unique_clicks | number %></td>
+            </tr>
+            <tr>
+                <td><b>Leads:</b></td>
+                <td><% user.campaign_leads + user.campaign_reversals | number %></td>
+            </tr>
+            <tr>
+                <td><b>Reversals:</b></td>
+                <td><% user.campaign_reversals | number %></td>
+            </tr>
+            <tr>
+                <td><b>Conversion Rate:</b></td>
+                <td><% (user.campaign_leads / (user.campaign_clicks + user.campaign_leads)) * 100 | number : fractionSize %> %</td>
+            </tr>
+            <tr>
+                <td><b>Unique Clicks Conversion Rate:</b></td>
+                <td><% user.campaign_leads / (user.campaign_unique_clicks + user.campaign_leads) | number : fractionSize %> %</td>
+            </tr>
+            <tr>
+                <td><b>Fraud/Reversal Rate:</b></td>
+                <td>%</td>
+            </tr>
+            <tr>
+                <td><b>Todays Proxy Rate:</b></td>
+                <td>% (0 Proxies Caught)</td>
+            </tr>
+            <tr>
+                <td><b>Yesterdays Proxy Rate:</b></td>
+                <td>% (0 Proxies Caught)</td>
+            </tr>
+            <tr>
+                <td><b>Overall Proxy Rate:</b></td>
+                <td></td>
+            </tr>
+        </table>
+
+        <h2>Last 5 Reports (Clicks, Leads and Reversals)</h2>
+
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>ID</th>
+                <th>Status</th>
+                <th>Campaign ID</th>
+                <th>Credit hash</th>
+                <th>Date</th>
+            </tr>
+            <tr ng-repeat="report in user.last_reports">
+                <td><% report.id %></td>
+                <td ng-switch on="report.status">
+                    <span ng-switch-when="1">Click</span>
+                    <span ng-switch-when="2">Lead</span>
+                    <span ng-switch-when="3">Reversal</span>
+                    <span ng-switch-default>Unknown (Unexpected Behaviour)</span>
+                </td>
+                <td><% report.campaign_id %></td>
+                <td><% report.credit_hash %></td>
+                <td><% report.created_at %></td>
+            </tr>
+        </table><br />
+
+        <h2>Campaign Rate Adjustment(s)</h2>
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>ID</th>
+                <th>Status</th>
+                <th>Campaign</th>
+                <th>Date</th>
+                <th>Our Rate</th>
+                <th>New Rate and Update</th>
+            </tr>
+            <tr>
+                <td colspan="6" style="text-align: center;">There are no custom rate adjustments for this account.</td>
+            </tr>
+            <tr ng-repeat="rate in user.rates">
+                <td><% rate.id %></td>
+                <td ng-switch on="rate.active">
+                    <span ng-switch-when="yes"></span>
+                    <span ng-switch-when="no"></span>
+                    <span ng-switch-default>Unknown (Unexpected Behaviour)</span>
+                </td>
+                <td>{!! rate.campaign_id !!}</td>
+                <td>{!! rate.created_at !!}</td>
+                <td>{!! rate.campaign_id !!}</td>
+                <td>
+                    {!! Form::open(array('url' => 'admin/campaigns/rates', 'method' => 'put')) !!}
+                    {!! Form::hidden('return_path', 'admin/publishers/'. $user->id .'/edit') !!}
+                    {!! Form::hidden('rate_id', $r->id) !!}
+                    {!! Form::number('rate', $r->rate, array('required' => 'required')) !!}
+                    {!! Form::select('rate_status', [ 0 => 'Pending', 'yes' => 'Approved', 'no' => 'Denied']) !!}
+                    {!! Form::submit('Update') !!}
+                    {!! Form::close() !!}
+                </td>
+            </tr>
+        </table>
+    </form>
+        <br />
+
+    <h2 style="color:red;">Account Fraud Alerts</h2>
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>Note</th>
+            <th>Date</th>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align: center;">There are no fraud alerts for this account.</td>
+        </tr>
+    </table>
+    <br />
+
+</div>

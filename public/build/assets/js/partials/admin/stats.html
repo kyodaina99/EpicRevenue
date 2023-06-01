@@ -1,0 +1,207 @@
+<div ng-controller="StatsController">
+    <div class="admin-dashboard">
+    <div class="row">
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Today Clicks</h3>
+                    <h2 id="today_clicks" class="card-title text-inherit"><% stats.today_clicks %></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Today Leads</h3>
+                    <h2 id="today_leads" class="card-title text-inherit"><% stats.today_leads %></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Today CR</h3>
+                    <h2 id="today_cr" class="card-title text-inherit"><%(stats.today_leads / stats.today_clicks) * 100 | number : fractionSize %>%</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Today EPC</h3>
+                    <h2 id="today_epc" class="card-title text-inherit"><% stats.earnings_today / stats.today_clicks | number : fractionSize %></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Today REV</h3>
+                    <h2 id="today_revenue" class="card-title text-inherit"><% stats.earnings_today | currency %></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Today EProfits</h3>
+                    <h2 id="today_profits" class="card-title text-inherit"><span id="today_profits"><% stats.profits_today | currency %></span></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Yesterday Clicks</h3>
+                    <h2 class="card-title text-inherit"><% stats.yesterday_clicks %></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Yesterday Leads</h3>
+                    <h2 class="card-title text-inherit"><% stats.yesterday_leads %></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Yesterday CR</h3>
+                    <h2 class="card-title text-inherit"><span id="yesterday_cr"><% (stats.yesterday_leads / stats.yesterday_clicks) * 100 | number : fractionSize %>%</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Yesterday EPC</h3>
+                    <h2 class="card-title text-inherit"><span id="yesterday_epc"><% stats.earnings_yesterday / stats.yesterday_clicks | number : fractionSize %></span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Yesterday REV</h3>
+                    <h2 class="card-title text-inherit"><% stats.earnings_yesterday | currency %></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Yesterday eProfits</h3>
+                    <h2 class="card-title text-inherit"><% stats.profits_yesterday | currency %></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Month Clicks</h3>
+                    <h2 class="card-title text-inherit"><span id="month_clicks"><% stats.month_clicks %></span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Month Leads</h3>
+                    <h2 class="card-title text-inherit"><span id="month_leads"><% stats.month_leads %></span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Month CR</h3>
+                    <h2 class="card-title text-inherit"><span id="month_cr"><% (stats.month_leads / stats.month_clicks) * 100 | number : fractionSize %>%</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Month EPC</h3>
+                    <h2 class="card-title text-inherit"><span id="month_epc"><% stats.earnings_month / stats.month_clicks | number : fractionSize %></span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Month REV</h3>
+                    <h2 class="card-title text-inherit"><span id="month_revenue"><% stats.earnings_month | currency %></span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Month eProfits</h3>
+                    <h2 class="card-title text-inherit"><span id="month_profits"><% stats.profits_month | currency %></span></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Total Clicks</h3>
+                    <h2 class="card-title text-inherit"><span id="total_clicks"><% stats.total_clicks %></span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Total Leads</h3>
+                    <h2 class="card-title text-inherit"><span id="total_leads"><% stats.total_leads %></span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Total CR</h3>
+                    <h2 class="card-title text-inherit"><span id="total_cr"><% (stats.total_leads / stats.total_clicks) * 100 | number : fractionSize %>%</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Total EPC</h3>
+                    <h2 class="card-title text-inherit"><span id="total_epc"><% stats.earnings_total / stats.total_clicks | number : fractionSize %></span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Total REV</h3>
+                    <h2 class="card-title text-inherit"><span id="total_revenue"><% stats.earnings_total | currency %></span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6">
+            <div class="card admin-panel-stats">
+                <div class="card-body">
+                    <h3 class="card-subtitle">Total eProfits</h3>
+                    <h2 class="card-title text-inherit"><span id="total_profits"><% stats.profits_total | currency %></span></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

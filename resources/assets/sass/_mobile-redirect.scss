@@ -1,0 +1,82 @@
+@import url("//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800");
+.regular,body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+}
+.semibold {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+}
+.light {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+.regular-light {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  /*background-color: #5BA4F7;*/
+  background-color:#000000;
+  color: #fff;
+  font: 18px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  line-height: 1.5em;
+  text-align: center;
+  height: 100%;
+  position: relative;
+  overflow: scroll;
+  
+  -webkit-transition: background-color 0.6s ease-in-out 0s;
+  transition: background-color 0.6s ease-in-out 0s;
+}
+
+a {
+  color: #000;
+}
+h1 {
+  line-height: 40px;
+  margin: 0;
+}
+.spinner {
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+
+  margin: 100px auto;
+  -webkit-animation: rotateplane 1.2s infinite ease-in-out;
+  animation: rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes rotateplane {
+  0% { 
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+  } 50% { 
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+  } 100% { 
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+.ir-redirect {
+  background: #fff;
+  padding: 10px 20px;
+  margin-top: 5px;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 35px;
+  font-size: 20px;
+}

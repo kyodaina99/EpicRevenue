@@ -1,0 +1,102 @@
+ <div class="page-header mb-4">
+    <div class="row align-items-center">
+        <div class="col-sm mb-2 mb-sm-0">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-no-gutter">
+                    <li class="breadcrumb-item"><a class="breadcrumb-link" href="#">Reports</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Campaign Reports</li>
+                </ol>
+            </nav>
+
+            <h1 class="page-header-title">Campaign Reports</h1>
+        </div>
+        <!-- End Col -->
+    </div>
+    <!-- End Row -->
+</div>
+ 
+ <!-- Form -->
+<div class="mb-4 card p-3">
+    <div class="row">
+        <div class="col-6">
+            <label for="name" class="w-100 mb-2 fw-700">Search</label>
+            <input type="text" ng-model="query" class="form-control mb-2" placeholder="Search...">
+        </div>
+        <div class="col-auto">
+            <label for="name" class="w-100 mb-2 fw-700">Search by</label>
+            <select ng-model="search_by" class="form-select mb-2">
+                <option value="reports.id">ID</option>
+                <option value="reports.status">Status</option>
+                <option value="reports.country">GEO</option>
+            </select>
+        </div>
+        <div class="col-auto">
+            <label for="name" class="w-100 mb-2 fw-700">Sort by</label>
+            <select ng-model="order_by" class="form-select mb-2">
+                <option value="reports.id">ID</option>
+                <option value="reports.created_at">Newest</option>
+                <option value="reports.status">Status</option>
+                <option value="reports.country">GEO</option>
+                <option value="reports.created_at">Date</option>
+            </select>
+        </div>
+        <div class="col-auto">
+            <label for="name" class="w-100 mb-2 fw-700">Order by</label>
+            <select ng-model="order" class="form-select mb-2">
+                <option value="asc">Ascending</option>
+                <option value="dsc">Descending</option>
+            </select>
+        </div>
+        <div class="col-auto">
+            <input class="btn btn-primary mt-4" type="submit" value="Search" ng-click="searchRecords(query, search_by, order_by, order)" />
+        </div>
+    </div>
+    <!-- End Row -->
+</div>
+<!-- End Form -->
+
+
+<div class="card rounded-0">
+    <div class="table-responsive">
+
+    <uib-pagination items-per-page="itemsPerPage" total-items="totalItems" ng-model="currentPage" max-size="maxSize" ng-change="pageChanged()" class="pagination border-bottom px-2 py-3 mb-0" boundary-links="true" rotate="false" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+
+    <table class="table table-lg table-thead-bordered table-nowrap table-align-middle card-table dataTable table-hover no-footer">
+        <tr>
+            <th>ID</th>
+            <th>Status</th>
+            <th>PID</th>
+            <th>Name</th>
+            <th>DateTime</th>
+            <th>OS</th>
+            <th>GEO</th>
+            <th>Credit hash</th>
+            <th>Options</th>
+        </tr>
+
+        <tr ng-repeat="report in reports | filter:query">
+            <td><% report.id  %></td>
+
+                <td ng-if="report.status == 1"><strong>Click</strong></td>
+                <td ng-if="report.status == 2"><strong>Lead</strong></td>
+                <td ng-if="report.status == 3"><strong>Reversal</strong></td>
+
+            <td><a href="#/publishers/edit/<% report.user_id %>" target="_blank"><% report.user_id  %></a></td>
+            <td><% report.campaign.name  %></td>
+            <td><% report.created_at  %></td>
+            <td><% report.os %></td>
+            <td><% report.country %></td>
+            <td><% report.credit_hash %></td>
+            <td>
+                <a ng-if="report.status == 1" ng-click="update(report.id, 2)" class="btn btn-success"><i class="bi bi-check-lg"></i></a>
+                <a ng-if="report.status == 2" ng-click="update(report.id, 1)" class="btn btn-danger"><i class="bi bi-repeat"></i></a>
+                <a href="#/reports/show/<% report.id %>" class="btn btn-info"><i class="bi bi-info-circle"></i></a>
+                <a ng-click="destroy(report.id)" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+            </td>
+        </tr>
+    </table>
+
+    <uib-pagination items-per-page="itemsPerPage" total-items="totalItems" ng-model="currentPage" max-size="maxSize" ng-change="pageChanged()" class="pagination px-2" boundary-links="true" rotate="false" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+    </div>
+</div>
+

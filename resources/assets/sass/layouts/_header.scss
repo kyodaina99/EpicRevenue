@@ -1,0 +1,174 @@
+.header {
+    float: left;
+    width: 100%;
+    background: #000;
+    box-shadow: 0 0 10px 0 rgba(50,50,50,.75);
+    padding: 25px 0;
+}
+.header .navbar {
+    min-height:auto;
+}
+.header .navbar .logo {
+    width: 200px;
+    float: left;
+}
+.header .navbar-nav>li>a {
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: .4px;
+    padding: 0px 15px;
+    text-transform:uppercase;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+    color: #fff;
+    border-bottom: 2px solid #ffffff;
+}
+
+.navbar {
+    margin:0;
+}
+.navbar-toggle {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    top: 10px;
+}
+.navbar-toggle .icon-bar {
+    background: #fff;
+}
+.nk-icon-burger {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 18px;
+  color: #FFFFFF;
+}
+
+.nk-icon-burger>span {
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 0;
+  border-bottom: 2px solid;
+  top: 50%;
+  transition: 0.3s 0.2s width, 0.3s opacity, 0.2s transform;
+  will-change: width, opacity, transform;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.nk-icon-burger .nk-t-1 {
+  margin-top: -8px;
+}
+
+.nk-icon-burger .nk-t-2 {
+  margin-top: -1px;
+}
+
+.nk-icon-burger .nk-t-3 {
+  margin-top: 6px;
+}
+
+.nk-icon-burger:hover .nk-t-1,
+a:hover>.nk-icon-burger .nk-t-1 {
+  animation: nk-icon-burger-animation 0.4s ease-in-out;
+}
+
+.nk-icon-burger:hover .nk-t-2,
+a:hover>.nk-icon-burger .nk-t-2 {
+  animation: nk-icon-burger-animation 0.4s 0.1s ease-in-out;
+}
+
+.nk-icon-burger:hover .nk-t-3,
+a:hover>.nk-icon-burger .nk-t-3 {
+  animation: nk-icon-burger-animation 0.4s 0.2s ease-in-out;
+}
+
+@keyframes nk-icon-burger-animation {
+  0%,
+  100% {
+    transform: translateX(0)
+  }
+  50% {
+    width: 14px;
+    transform: translateX(3px)
+  }
+}
+
+.nk-icon-close {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+}
+
+.nk-icon-close:before,
+.nk-icon-close:after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 21px;
+  height: 0;
+  border-bottom: 2px solid;
+  top: 50%;
+  left: 0;
+  transform-origin: 50% 50%;
+}
+
+.nk-icon-close:before {
+  transform: rotate(45deg);
+}
+
+.nk-icon-close:after {
+  transform: rotate(-45deg);
+}
+@media (max-width: 767px)
+{
+    .header {
+        border-bottom: 1px solid #333333;
+    }
+    .header #navbar {
+        width: 100%;
+        background: #fff;
+        padding:0px;
+    }
+    .header .navbar-nav {
+    margin: 0;
+    }
+    .header .navbar .logo {
+        padding: 10px 0;
+    }
+    .header .navbar-nav>li {
+        width:100%;
+    }
+    .header .navbar-nav>li>a {
+        color:#000000;
+        padding: 15px;
+        border-bottom: 1px solid #000000;
+    }
+    .dropdown-menu>li>a {
+        font-weight: 700;
+        color: #000;
+        padding: 5px;
+    }   
+    .navbar-nav .open .dropdown-menu {
+        background-color: #fff;
+    }
+    .navbar-collapse {
+    box-shadow: none;
+    }
+    .nav>li>a:focus, .nav>li>a:hover {
+    background-color: transparent;
+    border-top:1px dashed #960000;
+    }
+    .nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+    background-color: transparent;
+    border-top:1px dashed #960000;
+    }
+    .nav .open>a.dropdown-toggle, .nav .open>a.dropdown-toggle:focus {
+    background-color: transparent !important;
+    }
+    .navbar-nav .open .dropdown-menu>li>a {
+    padding: 10px !important;
+    }
+}

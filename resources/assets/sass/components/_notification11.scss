@@ -1,0 +1,43 @@
+.dropdown{display:inline-block;float:left;}.glyphicon-bell{font-size:1.5rem;}.notifications{min-width:300px;}.notifications-wrapper{/* max-height:250px; */}.menu-title{color:#28B240;display:inline-block;font-size:14px;font-weight:bold;line-height:20px;}.glyphicon-circle-arrow-right{margin-left:10px;}.notification-heading,.notification-footer{padding:0px 10px 2px 10px;line-height:30px;}.dropdown-menu.divider{margin:5px 0;}.item-text{color:#000;}.notifications a.content{text-decoration:none;background:#ccc;}.notification-item{padding:4px 10px 5px 10px;border-bottom:1px solid #bbbcc0;border-top:1px solid #bbbcc0;margin-top:-1px;cursor:pointer;}
+ul.dropdown-menu.notifications {
+  left: -182px;
+  top: 40px;
+  padding: 0;
+  min-width: 295px;
+}
+ul.dropdown-menu.notifications .divider {
+	margin: 0;
+	  background-color: transparent;
+}
+.notification-item:hover{background-color:rgb(244,245,247);}
+.arrow_box:after,.arrow_box:before{bottom:100%;left:50%;border:solid transparent;content:" ";height:0;width:0;position:absolute;pointer-events:none;}
+.arrow_box:after {
+  border-color: rgba(136,183,213,0);
+  border-bottom-color: #FFFFFF;
+  border-width: 12px;
+  margin-left: 0;
+}
+.arrow_box:before {
+  border-color: rgba(194,225,245,0);
+  border-bottom-color: rgba(187, 188, 189, 0.09);
+  border-width: 14px;
+  margin-left: 0;
+}
+.arrow_box {
+  position: relative;
+  top: 0;
+  left: 50px;
+}
+.arrow{position:absolute;display:block;width:0;height:0;border-color:transparent;border-style:solid;border-bottom-color:rgba(0,0,0,0.25);border-top-width:0;top:20px;border-width:11px;}
+.notification-status{float:left;line-height:30px;content:"\e650";background-color:rgb(40,178,4);border:2px solid #28B204;border-radius:50%;behavior:url(PIE.htc);;;width:10px;height:10px;margin-top: 5px;}.item-text{float:left;width:260px;line-height:20px;}.notification-time{font-size:10px;width:100%;display:table;line-height:10px;}.notification-status-viewed{background-color:rgb(255,255,255);}.notification-item-unviewed{background-color:#f2fafd;cursor:pointer;}.notification-item-unviewed:hover{background-color:#f2fafd;}i.glyphicon.glyphicon-bell{color:rgb(240,240,240);}
+
+div#notification-status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid rgb(40, 178, 4);
+    background-color: rgb(40, 178, 4);
+    position: absolute;
+    top: 0;
+    right: 5px;
+}

@@ -1,0 +1,46 @@
+.form-custom {
+  .form-control {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    height: 55px;
+    padding: 6px 20px;
+  }
+  .help-block {
+    color: $brand-gray;
+  }
+}
+
+.form-login {
+    .form-group {
+      margin-bottom: 0;
+    }
+
+    .form-control {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .glyphicon {
+      color: #ccc;
+    }
+
+    /* enable absolute positioning */
+    .inner-addon {
+    position: relative;
+    }
+
+    /* style glyph */
+    .inner-addon .glyphicon {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+    }
+
+    /* align glyph */
+    .left-addon .glyphicon  { left:  0px;}
+    .right-addon .glyphicon { right: 0px;}
+
+    /* add padding  */
+    .left-addon input  { padding-left:  30px; }
+    .right-addon input { padding-right: 30px; }
+}

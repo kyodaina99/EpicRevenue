@@ -1,0 +1,35 @@
+.social-account-container {
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+
+  &.add-account {
+    border: 2px dashed #eeeeee;
+  }
+
+  a {
+    color: black;
+    text-decoration: none;
+    text-transform: capitalize;
+
+    h5 {
+      margin-top: 22px;
+    }
+
+    img {
+      margin: 0 auto;
+      border: 1px solid white;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .fa {
+      font-size: 80px;
+      border: 1px solid white;
+      border-radius: 50%;
+      padding: 30px;
+      margin-bottom: 23px;
+    }
+  }
+}

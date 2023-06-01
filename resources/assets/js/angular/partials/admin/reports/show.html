@@ -1,0 +1,83 @@
+<div ng-controller="ReportDetailController">
+    <ol class="breadcrumb">
+        <li><a href="#/stats/">Admin</a></li>
+        <li><a href="#/reports/">Reports</a></li>
+        <li class="active"><% report.id %></li>
+    </ol>
+    <table class="table reports">
+        <tr>
+            <td><b>Report ID:</b></td>
+            <td><% report.id %></td>
+        </tr>
+        <tr>
+            <td><b>Publisher:</b></td>
+            <td><a href="#/publishers/edit/<% report.user.id %>" target="_blank"><% report.user.firstname %> <% report.user.lastname %></a></td>
+        </tr>
+        <tr>
+            <td><b>Campaign name:</b></td>
+            <td><% report.campaign.name %></td>
+        </tr>
+        <tr>
+            <td><b>Rate:</b></td>
+            <td><% report.rate | currency %></td>
+        </tr>
+        <tr>
+            <td><b>Report Status:</b></td>
+            <td ng-if="report.status == 1"><strong>Click</strong></td>
+            <td ng-if="report.status == 2"><strong>Lead</strong></td>
+            <td ng-if="report.status == 3"><strong>Reversal</strong></td>
+        </tr>
+        <tr>
+            <td><b>Options</b></td>
+            <td>
+                <a ng-if="report.status == 1" ng-click="update(report.id, 2)" class="btn btn-success">Credit</a>
+                <a ng-if="report.status == 2" ng-click="update(report.id, 1)" class="btn btn-danger">Reverse</a>
+                <a ng-click="destroy(report.id)" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        <tr>
+            <td><b>Date:</b></td>
+            <td><% report.created_at %></td>
+        </tr>
+        <tr>
+            <td><b>IP Address:</b></td>
+            <td><% report.ip %></td>
+        </tr>
+        <tr>
+            <td><b>Internet Browser:</b></td>
+            <td><% report.browser %></td>
+        </tr>
+        <tr>
+            <td><b>OS:</b></td>
+            <td><% report.os %></td>
+        </tr>
+        <tr>
+            <td><b>Ref URL:</b></td>
+            <td><% report.ref_url %></td>
+        </tr>
+        <tr>
+            <td><b>SubID1:</b></td>
+            <td><% report.subid1 %></td>
+        </tr>
+        <tr>
+            <td><b>SubID2:</b></td>
+            <td><% report.subid2 %></td>
+        </tr>
+        <tr>
+            <td><b>SubID3:</b></td>
+            <td><% report.subid3 %></td>
+        </tr>
+        <tr>
+            <td><b>SubID4:</b></td>
+            <td><% report.subid4 %></td>
+        </tr>
+        <tr>
+            <td><b>SubID5:</b></td>
+            <td><% report.subid5 %></td>
+        </tr>
+        <tr>
+            <td><b>Credit Hash:</b></td>
+            <td><% report.credit_hash %></td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,190 @@
+.hero {
+  float: left;
+  width: 100%;
+  padding: 100px 0;
+  background: #000;
+  &.hero-lg {
+    min-height: 600px;
+    padding: 200px 0;
+
+    & h4 {
+      line-height: 1.5;
+    }
+  }
+  
+ 
+
+  &.hero-gradient {
+    background: rgba(255,255,255,0.99);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,0.99) 24%, rgba(255,255,255,0.99) 45%, rgba(237,237,237,0.99) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(24%, rgba(255,255,255,0.99)), color-stop(45%, rgba(255,255,255,0.99)), color-stop(100%, rgba(237,237,237,0.99)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,0.99) 24%, rgba(255,255,255,0.99) 45%, rgba(237,237,237,0.99) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(255,255,255,0.99) 24%, rgba(255,255,255,0.99) 45%, rgba(237,237,237,0.99) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,0.99) 24%, rgba(255,255,255,0.99) 45%, rgba(237,237,237,0.99) 100%);
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.99) 24%, rgba(255,255,255,0.99) 45%, rgba(237,237,237,0.99) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=1 );
+
+    height: auto;
+    min-height: 0 !important;
+    color: #5f5f5f;
+    padding: 75px 0;
+    border-bottom: 1px solid white;
+    margin-bottom: 0;
+
+
+    & *, & .hero-heading {
+      color: #000;
+    }
+    & .hero-heading {
+      margin-top: 11px;
+    }
+
+  }
+
+
+  & * {
+    color: white;
+  }
+  .hero-heading {
+    margin-top: 35px;
+    color: white;
+  }
+  .hero-p {
+    color: #666;
+  }
+  &.hero-txt {
+    background: #fff;
+    height: auto;
+    min-height: 0 !important;
+    color: #5f5f5f;
+    padding: 50px 0;
+    border-bottom: 1px dashed #ccc;
+
+    & .hero-heading, & * {
+      margin-top: 0;
+      color: black;
+    }
+  }
+
+
+  &.hero-dashboard {
+    background: #ffffff;
+    color: #5f5f5f;
+    padding: 75px 0;
+    border-bottom: 1px solid #fff;
+    margin-bottom: 0;
+    border-bottom: 1px dashed #eee;
+    min-height: 250px;
+
+    & * {
+      color: #000;
+    }
+
+    
+  }
+
+  & .font-gray {
+    color: $brand-gray;
+    line-height: 1.5;
+  }
+  & .font-dark-gray {
+    color: $brand-dark-gray;
+    line-height: 1.5;
+  }
+}
+
+.hero h1 {
+    font-size: 50px;
+    font-weight:700;
+}
+
+.hero-dashboard h2 {
+    font-size:30px;
+    text-align:center;
+}
+
+@media screen and (max-width: $screen-sm)
+{
+  .offers {
+    & > div {
+      margin: 20px auto; 
+    }
+  }
+}
+
+.hero-apply-bttn {
+    background-color: transparent;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 0;
+}
+.main-promo {
+    /*
+    background-image: url(/images/hero.jpg);
+    background-size: cover;
+    */
+}
+
+.first-promo {
+    background: url(https://i.imgur.com/aHmXZ5h.png) #000;
+    background-size: cover;
+}
+
+.hero.second-promo {
+    background: url(https://i.imgur.com/Dw6w2LG.png) #000;
+    background-size: cover;
+}
+.hero.third-promo {
+    background: url(https://i.imgur.com/sS57352.png) #000;
+    background-size: cover;
+}
+.hero.fourth-promo {
+    background: url(https://i.imgur.com/CPc9H5H.jpg) #000;
+    background-size: cover;
+}
+.hero.fifth-promo {
+    background: #fff;
+}
+.hero.fifth-promo h2 {
+    color: #000;
+}
+.home-promo-photo img {
+    width: 100%;
+    background: #000;
+    padding: 5px;
+}
+.hero-apply-bttn {
+    background-color: transparent;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 4px;
+    border: 2px solid #fff;
+    padding: 14px 20px;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+.apply-now-button {
+    background: #fff;
+    color: #000000;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    padding: 7px 40px;
+}
+@media (max-width: 700px) {
+    .hero.main-promo {
+        background:#000000;
+    }
+    .hero-lg {
+        padding:100px 0 !important;
+    }
+
+}
+@media (max-width: 468px) {
+
+    .hero-lg {
+        padding:100px 0 !important;
+    }
+
+}

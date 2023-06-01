@@ -1,0 +1,150 @@
+body {
+    font-family: 'Rubik', sans-serif;
+}
+/* Base */
+.container {
+    max-width: 1660px;
+}
+
+/* HEADER */
+header {
+    background: #FFFFFF;
+}
+header a.navbar-brand, header a.nav-link, header a.nav-link.dropdown-toggle {
+    color: #000000;
+}
+header a.nav-link {
+    margin: 0px 10px;
+    font-size: 16px;
+    font-weight: 700;
+}
+header .navbar-brand:focus, header .navbar-brand:hover {
+    color: #377dff;
+}
+header .nav-link:hover, header .nav-link.dropdown-toggle:hover, header .nav-link:focus, header .navbar-nav .nav-link.active, header .navbar-nav .show>.nav-link {
+    color: #377dff;
+}
+button.navbar-toggler {
+    border: none;
+    color: #000000;
+    font-weight: 700;
+    font-size: 2rem;
+}
+.home button.navbar-toggler {
+    color: #FFFFFF;
+}
+.navbar-collapse.collapse.show {
+    background: #ffffff;
+    border: 1px solid #000000;
+}
+.home a.navbar-brand, .home header a.nav-link, .home header a.nav-link.dropdown-toggle  {
+    color: #FFFFFF;
+}
+.home .navbar-collapse.collapse.show a.nav-link {
+    color: #000000;
+}
+header.home {
+    background: transparent;
+    position: absolute;
+    width: 100%;
+}
+/* Search */
+.search .btn {
+    padding: 0.45rem 1.2rem;
+}
+
+/* Hero */
+.hero {
+    background: #f9f9f9;
+}
+.hero.main-promo {
+    font-family: 'Rubik', sans-serif;
+    /*background: #000000 url(https://images.pexels.com/photos/6954174/pexels-photo-6954174.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);*/
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://epicrevenue.com/images/herogirls.jpg");
+    background-size: cover;
+    padding: 150px 0;
+}
+.hero.main-promo h1 {
+    font-size: 60px;
+    font-weight: 800;
+}
+.hero.main-promo.blue {
+    background: #bdebfa;
+}
+.hero.main-promo.green {
+    background: #bcfabb;
+}
+.hero.info-promo {
+    background: #ffffff;
+}
+.hero.info-promo .green {
+    background: #bcfabb;
+}
+.hero.info-promo .blue {
+    background: #bdebfa;
+}
+.hero.info-promo .black {
+    background: #000000;
+}
+.hero.info-promo .purple {
+    background: #E9D7FA;
+}
+
+.hero.info-promo h3 {
+    line-height: 40px;
+}
+/* Footer */
+.footer .footer-logo {
+    height:20px;
+}
+.footer ul.social a {
+    width: auto;
+    height: auto;
+    font-size: 1.5rem !important;
+    line-height: 24px;
+    display: inline-block;
+    color: #000000;
+}
+
+/* MISC */
+.form-control {
+    padding: 10px 0.75rem;
+}
+.card-subtitle {
+    display: block;
+    text-transform: uppercase;
+    color: #8c98a4;
+    font-size: .71094rem;
+    margin-top: -0.125rem;
+    margin-bottom: 0.5rem;
+}
+input.form-control, .form-select {
+    border: 1px solid #eeeeee;
+}
+.dropdown-toggle::after {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    background-image: url("data:image/svg+xml,%3csvg width='24' height='24' viewBox='0 0 24 24' fill='%2351596C' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.72,15.78a.75.75,0,0,1-.53.22h-.38a.77.77,0,0,1-.53-.22L6.15,10.64a.5.5,0,0,1,0-.71l.71-.71a.49.49,0,0,1,.7,0L12,13.67l4.44-4.45a.5.5,0,0,1,.71,0l.7.71a.5.5,0,0,1,0,.71Z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 1rem 1rem;
+    margin-left: auto;
+    padding-left: 1.25rem;
+    content: '';
+    border: 0;
+    vertical-align: -2px;
+}
+.linkname {
+  display: none;
+}
+
+@media (min-width: 768px) {
+
+  .linkname {
+    display: block;
+    background: #3b3e45;
+    color: #fff;
+  }
+}
+

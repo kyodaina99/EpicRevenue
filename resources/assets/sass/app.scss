@@ -1,0 +1,80 @@
+@import "variables";
+
+//@import "mdl/material-design-lite";
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/font-awesome/scss/font-awesome";
+
+
+html, body {
+  font-family: proxima-nova,Helvetica Nueue,Helvetica,Calibri,Arial,sans-serif;
+  color: #3b454a;
+}
+body {
+  background: white;
+}
+
+.page-container {
+    /*
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  -moz-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  background-color: #fff;*/
+  padding: 50px 0;
+  float:left;
+  width:100%;
+
+
+
+  &.page-top-margin {
+    margin-top: 30px;
+  }
+
+  &.no-shadow {
+    box-shadow: none;
+  }
+
+  &.no-border {
+    border: none;
+  }
+
+  &.background-gray {
+    background: #f8f8f8;
+  }
+
+  .heading {
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  p {
+    line-height: 2;
+    word-spacing: 2px;
+    font-size: 13.2px;
+  }
+}
+
+
+
+
+@import "layouts/header";
+@import "layouts/footer";
+
+@import "components/timeline";
+@import "components/notification11";
+@import "components/form";
+@import "components/anchor";
+@import "components/hero";
+@import "components/buttons";
+@import "components/modal";
+@import "components/icons";
+@import "components/fonts";
+@import "components/panel";
+
+@import "pages/home";
+@import "pages/influencers";
+@import "pages/login";
+@import "pages/networks";
+@import "pages/dashboard";
+@import "pages/promote";
+@import "pages/campaigns";
+
+//@import "template";

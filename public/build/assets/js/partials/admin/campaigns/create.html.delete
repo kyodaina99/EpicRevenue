@@ -1,0 +1,307 @@
+<div ng-controller="CampaignCreateController">
+    <form name="campaign_form table-responsive" ng-submit="create(campaign, targets)">
+        <table class="table table-striped table-bordered">
+            <ol class="breadcrumb">
+                <li><a href="#/stats/">Admin</a></li>
+                <li><a href="#/campaigns/">Campaigns</a></li>
+                <li class="active">Create <% campaign.id %></li>
+            </ol>
+            <tr>
+                <td colspan="2"><h2>Create Campaign</h2></td>
+            </tr>
+            <tr>
+                <td><b>Name:</b></td>
+                <td>
+                    <input ng-model="campaign.name" name="name" class="form-control" required />
+                    <div role="alert">
+                        <span class="error" ng-show="campaign_form.name.$error.required">
+                            Required!
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Description:</b></td>
+                <td>
+                    <textarea ng-model="campaign.description" name="description" class="form-control"></textarea>
+                    <div role="alert">
+                        <span class="error" ng-show="campaign_form.description.$error.required">
+                            Required!
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Start At:</b></td>
+                <td>
+                    <input type="date" ng-model="campaign.start_at" name="start_at" class="form-control" required />
+                    <div role="alert">
+                        <span class="error" ng-show="campaign_form.start_at.$error.required">
+                            Required!
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><b>End At:</b></td>
+                <td>
+                    <input type="date" ng-model="campaign.end_at" name="end_at" class="form-control" required />
+                    <div role="alert">
+                        <span class="error" ng-show="campaign_form.end_at.$error.required">
+                            Required!
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Type</b></td>
+                <td>
+                    <select name="type" ng-model="campaign.type" class="form-control" required>
+                        <option value="top_earner" selected>Top Earner</option>
+                        <option value="referral">Referral</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+        <h3>Rewards</h3>
+        <table class="table table-striped table-bordered">
+            <tr ng-repeat="target in targets">
+                <td><b>Position <% target.position %></b></td>
+                <td class="row">
+                    <div class="col-sm-12">
+                        <b>Name:</b> <input type="text" ng-model="target.name" class="form-control" required />
+                    </div>
+                    <div class="col-sm-12">
+                        <b>Description:</b> <textarea class="form-control" ng-model="target.description" rows="5"></textarea>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Options</b></td>
+                <td>
+                    <a class="btn btn-success" role="button" ng-click="addTarget()">Add</a>
+                    <a class="btn btn-danger" role="button" ng-click="removeTarget()">Remove</a>
+                </td>
+            </tr>
+        </table>
+        <div><input class="form-control btn btn-primary" type="submit" value="Create"><% message %></div>
+    </form>
+</div>
+<hr>
+
+
+
+
+
+<table class="table table-striped table-bordered">
+    <tr>
+        <td>Campaign name:</td>
+        <td>
+            <input ng-model="campaign.name" name="name" class="form-control" required />
+            <div role="alert">
+                <span class="error" ng-show="campaign_form.name.$error.required">Required!</span>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top">Campaign description:</td>
+        <td>
+            <textarea class="form-control" ng-model="campaign.description" rows="5"></textarea>
+            <div role="alert">
+                <span class="error" ng-show="campaign_form.description.$error.required">Required!</span>
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Feature image:</td>
+        <td>
+            {!! Form::file('feature_image') !!}
+        </td>
+    </tr>
+
+    <tr>
+        <td>Mobile App Wall?:</td>
+        <td>
+            <input type="checkbox" ng-model="campaign.mobile" ng-true-value="'yes'" ng-false-value="'no'"> <small>Check this box to upload mobile icon</small>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Incent?:</td>
+        <td>
+            <input type="checkbox" ng-model="campaign.incent" ng-true-value="'yes'" ng-false-value="'no'"> <small>Check this box to make incent</small>
+        </td>
+    </tr>
+
+    <tr>
+        <td valign="top">Campaign requirements:</td>
+        <td>
+            <textarea class="form-control" ng-model="campaign.requirements" name="requirements" rows="6"></textarea>
+            <div role="alert">
+                <span class="error" ng-show="campaign_form.requirements.$error.required">Required!</span>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top"><label for="campaign_categories">Campaign category:</label></td>
+        <td>
+            <select class="form-control" name="campaign_categories" id="campaign_categories" ng-model="campaign.category" required>
+                <option ng-repeat="category in campaign_categories" value="<% $index + 1 %>"><% category %></option>
+            </select>
+            <div role="alert">
+                <span class="error" ng-show="campaign_form.countries.$error.required">Required!</span>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top">Cap:</td>
+        <td>
+            <input type="number" ng-model="campaign.cap" name="cap" class="form-control" required />
+            <div role="alert">
+                <span class="error" ng-show="campaign_form.cap.$error.required">Required!</span>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top">Daily Cap:</td>
+        <td>
+            <input type="number" ng-model="campaign.daily_cap" name="daily_cap" class="form-control" min="1" required />
+            <div role="alert">
+                <span class="error" ng-show="campaign_form.daily_cap.$error.required">Required!</span>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top">Private Campaign:</td>
+        <td>
+            <input type="checkbox" ng-model="campaign.private" ng-true-value="'yes'" ng-false-value="'no'"> <small>Automatically set campaigns as private, and only allow specific publishers to run it.</small>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top">Campaign rate:</td>
+        <td>
+            <input type="number" ng-model="campaign.rate" name="rate" class="form-control" min="0.01" step="0.01" required />
+            <div role="alert">
+                <span class="error" ng-show="campaign_form.rate.$error.required">Required!</span>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top">Network rate:</td>
+        <td>
+            <input type="number" ng-model="campaign.network_rate" name="network_rate" class="form-control" min="0.01" step="0.01" required />
+            <div role="alert">
+                <span class="error" ng-show="campaign_form.network_rate.$error.required">Required!</span>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top"><label for="networks">Network:</label></td>
+        <td>
+            <select class="form-control" name="networks" id="networks" ng-model="campaign.networks" required>
+                <option ng-repeat="network in networks" value="<% $index + 1 %>"><% network %></option>
+            </select>
+            <div role="alert">
+                <span class="error" ng-show="campaign_form.countries.$error.required">Required!</span>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top">Campaign URL:</td>
+        <td>
+            <input type="url" ng-model="campaign.url" name="url" class="form-control" min="0.01" step="0.01" required />
+            <div role="alert">
+                <span class="error" ng-show="campaign_form.url.$error.required">Required!</span>
+                <span class="error" ng-show="campaign_form.url.$error.url">Required!</span>
+            </div>
+            <a href="#" ng-click="addToUrl('campaign.url', '{hash}')">Add Credit Hash</a> | <a href="#" ng-click="addToUrl('campaign.url', '{pubid}')">Add PubID</a>
+            <small>({hash} = credit hash, {pubid} = publisher id)</small>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top">Targeting:</td>
+        <td>
+            <div id="entry1" class="clonedInput" style="display:none;">
+                <div style="margin-bottom:10px;float: left;width: 100%;">
+                    <div class="col-md-2 alpha">
+                        <select class="form-control" name="tar_country[]">
+                            <option value="">Select Country</option>
+                            @foreach($countries as $id => $name)
+                            <option value="{{ $name }}">{{ $name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-2 alpha">
+                        <select class="form-control" name="tar_os[]">
+                            <option value="">Select OS</option>
+                            <option value="AndroidOS">Android</option>
+                            <option value="iOS">iOS</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2 alpha">
+                        <select name="tar_device[]" class="form-control">
+                            <option value>Select Device</option>
+                            <option value="Desktop">Desktop</option>
+                            <option value="Mobile">Mobile</option>
+                            <option value="Tablet">Tablet</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1 alpha">
+                        <input class="form-control" type="number" name="tar_rate[]" placeholder="Rate" value="" step='0.01' />
+                    </div>
+                    <div class="col-md-1 alpha">
+                        <input class="form-control" type="number" name="tar_network_rate[]" placeholder="Netwrok Rate" value="" step='0.01' />
+                    </div>
+                    <div class="col-md-3 alpha">
+                        <input class="form-control" type="text" name="tar_url[]" value="http://" />
+                    </div>
+                    <div class="col-md-1 alpha omega">
+                        <select name="tar_active[]" class="form-control">
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div id="addDelButtons">
+                <input type="button" class= "btn btn-default" id="btnAdd" value="Add rule"> <input type="button" class= "btn btn-default" id="btnDel" value="Remove rule above">
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td valign="top">Tracking Pixel:</td>
+        <td>
+            <textarea class="form-control" ng-model="campaign.tracking" name="tracking" rows="6" required></textarea>
+            <div role="alert">
+                <span class="error" ng-show="campaign_form.tracking.$error.required">Required!</span>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top"><label for="countries">Allowed countries:</label></td>
+        <td>
+            <select class="form-control" name="countries" id="countries" ng-model="campaign.countries" multiple required>
+                <option ng-repeat="country in countries" value="<% $index + 1 %>"><% country %></option>
+            </select>
+            <div role="alert">
+                <span class="error" ng-show="campaign_form.countries.$error.required">Required!</span>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top">Active ?</td>
+        <td>
+            <input type="checkbox" ng-model="campaign.active" ng-true-value="'yes'" ng-false-value="'no'">
+        </td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td>
+            <input type="submit" class="btn btn-primary" value="Create Campaign" />
+        </td>
+    </tr>
+</table>
